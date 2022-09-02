@@ -72,6 +72,7 @@ struct Node * deleteAtNode(struct Node * head, int value){
     }
     return head;
 }
+
 int main()
 {
     struct Node *head;
@@ -106,7 +107,8 @@ int main()
 
     // head = deleteFirst(head); // For deleting first element of the linked list
     // head = deleteAtIndex(head, 2);
-    head = deleteAtLast(head);
+    // head = deleteAtLast(head);
+    head = deleteAtNode(head, 3);
     printf("Linked list after deletion\n");
     linkedListTraversal(head);
 
