@@ -11,3 +11,4 @@ stackOperations
 stackInLinkedList
 paranthesisMatchingProblem
 multiParanthesisProblem
+infixPostfixPrefix
