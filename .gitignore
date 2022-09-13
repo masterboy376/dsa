@@ -13,3 +13,5 @@ paranthesisMatchingProblem
 multiParanthesisProblem
 infixPostfixPrefix
 queueWithArray
+queueWithLinkedList
+circularQueue
