@@ -20,3 +20,4 @@ insertionSortAlgorithm
 selectionSort
 quickSort
 mergeSort
+countSort
