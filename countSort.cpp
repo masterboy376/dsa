@@ -15,11 +15,11 @@ void countSort(int A[], int n){
     for (int i = 0; i < n; i++)
     {
         if(max<A[i]){
-            max = A[i]+1;
+            max = A[i];
         }
     }
-    int B[max];
-    for (int i = 0; i < max; i++)
+    int B[max+1];
+    for (int i = 0; i < max+1; i++)
     {
         B[i] = 0;
     }
@@ -27,7 +27,7 @@ void countSort(int A[], int n){
     {
         B[A[i]]++;
     }
-    for(int i = 0; i<max; i++){
+    for(int i = 0; i<max+1; i++){
         while(B[i]>0){
             A[index]=i;
             index++;
