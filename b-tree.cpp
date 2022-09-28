@@ -86,6 +86,7 @@ struct Node *isPresentRecursive(struct Node *root, int n)
         return isPresentRecursive(root->right, n);
     }
 }
+
 struct Node *isPresentIterative(struct Node *root, int n)
 {
     while (root != NULL)
@@ -105,6 +106,7 @@ struct Node *isPresentIterative(struct Node *root, int n)
     }
     return NULL;
 }
+
 void insertion(struct Node *root, int n)
 {
     // struct Node* prev =;
@@ -113,6 +115,7 @@ void insertion(struct Node *root, int n)
         if (n == root->data)
         {
             cout << "The item already in BST" << endl;
+            return;
         }
         else if (n < root->data)
         {
@@ -140,6 +143,45 @@ void insertion(struct Node *root, int n)
         }
     }
 }
+
+// find inorder predecessor
+struct Node* inOrderPredecessor(struct Node* root){
+    root = root->left;
+    while(root->right == NULL){
+        root = root->right;
+    }
+    return root;
+}
+
+// deletion
+struct Node *deleteNode(struct Node *root, int value){
+
+    // struct Node* iPre = new struct Node();
+    // iPre = NULL;
+    if (root == NULL){
+        return NULL;
+    }
+    if (root->left==NULL&&root->right==NULL){
+        free(root);
+    }
+
+    //searching for the node to be deleted
+    if (value < root->data){
+        deleteNode(root->left,value);
+    }
+    else if (value > root->data){
+        deleteNode(root->right,value);
+    }
+    //deletion strategy when the node is found
+    else{
+        struct Node* iPre = new struct Node();
+        iPre = inOrderPredecessor(root);
+        root->data = iPre->data;
+        deleteNode(root->left, iPre->data);
+    }
+    return root;
+}
+
 
 int main()
 {
@@ -206,6 +248,12 @@ int main()
     insertion(root, 19);
     inTraversal(root);
     cout << endl;
-    
+
+    // deletion
+    deleteNode(root, 12);
+    inTraversal(root);
+    cout << endl;
+    cout<<root->data<<endl;
+
     return 0;
 }
